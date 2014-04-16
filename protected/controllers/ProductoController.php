@@ -32,7 +32,7 @@ class ProductoController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','loadImage','pedido'),
+				'actions'=>array('create','update','loadImage','pedido','ajaxupdate'),
 				'users'=>array('@'),				
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -175,7 +175,32 @@ class ProductoController extends Controller
 			'id'=>$id,
 		));
 	}
-	
+	public function actionAjaxupdate() {
+		  $act = $_GET['act'];
+		 
+		 $autoIdAll = $_POST['autoId'];
+		 
+        if(count($autoIdAll)>0)
+        {
+            foreach($autoIdAll as $autoId)
+            {
+                $model=$this->loadModel($autoId);
+                if($act=='doAdd'){
+                	echo 'ok';
+                }
+                   
+                if($act=='doDelete')
+				
+                if($act=='doDeleteAll')
+				
+                if($model->save())
+                    echo 'ok';
+                else
+                    throw new Exception("Sorry",500);
+ 
+            }
+        }
+    }
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.

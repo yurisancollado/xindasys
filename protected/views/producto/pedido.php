@@ -66,7 +66,7 @@ function reloadGrid(data) {
     $.fn.yiiGridView.update('menu-grid');
 }
 </script>
-<?php echo CHtml::ajaxSubmitButton('Agregar',array('pedido/ajaxupdate','act'=>'doAdd'), array('success'=>'reloadGrid')); ?>
-<?php echo CHtml::ajaxSubmitButton('Eliminar',array('pedido/ajaxupdate','act'=>'doDelete'), array('success'=>'reloadGrid')); ?>
-<?php echo CHtml::ajaxSubmitButton('Eliminar Todos',array('pedido/ajaxupdate','act'=>'doDeleteAll'), array('success'=>'reloadGrid')); ?>
+<?php echo CHtml::ajaxSubmitButton('Agregar',array('ajaxupdate','act'=>'doAdd'), array('success'=>'reloadGrid')); ?>
+<?php echo CHtml::ajaxSubmitButton('Eliminar',array('ajaxupdate','act'=>'doDelete'), array('success'=>'reloadGrid')); ?>
+<?php echo CHtml::ajaxSubmitButton('Eliminar Todos',array('ajaxupdate','act'=>'doDeleteAll'), array('success'=>'reloadGrid')); ?>
 <?php $this->endWidget(); ?>
