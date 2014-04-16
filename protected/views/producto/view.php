@@ -24,10 +24,7 @@ $this->menu=array(
 		array(
 	       'name'=>'Imagen',
 		   'type'=>'raw',
-	       'value'=>html_entity_decode(CHtml::image(Yii::app()->controller->createUrl('producto/loadImage', array('id'=>$model->id))
-																				,'alt'
-																				,array('width'=>200)
-																				)),
+	       'value'=>$model->getImagen(200),
                 ),
 	),
 ));

@@ -119,4 +119,11 @@ class Producto extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	public function getImagen($width = 100){
+		return html_entity_decode(CHtml::image(Yii::app()->controller->createUrl('producto/loadImage', array('id'=>$this->id))
+																				,'alt'
+																				,array('width'=>$width)
+																				));
+	}
 }

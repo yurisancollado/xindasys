@@ -43,6 +43,11 @@ $('.search-form form').submit(function(){
 	
 		'detalle',
 		'descripcion',
+		array(
+	       'name'=>'binaryfile',
+		   'type'=>'raw',
+	       'value'=>'$data->getImagen(50)',
+                ),
 		
 		array(
 			'class'=>'CButtonColumn',
