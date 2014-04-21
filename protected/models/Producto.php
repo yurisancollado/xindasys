@@ -126,4 +126,12 @@ class Producto extends CActiveRecord
 																				,array('width'=>$width)
 																				));
 	}
+public function getCheck(){
+		$model = PedidoHasProductos::model() -> findByAttributes(array('pedido_id' => $_GET['id'], 'productos_id' => $this->id));
+		
+		if($model)
+		 return 1;
+		else 
+		 return 0;
+	}
 }

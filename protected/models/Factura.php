@@ -122,8 +122,8 @@ class Factura extends CActiveRecord {
 	}
 
 	public function getMontoCancelado() {
-		$sql = "Select SUM(monto) as total from Abono where factura_id= ".$this->id;
-		$sqlAbono = Yii::app() -> db -> createCommand($sql) -> queryRow();
+		$sql = "Select SUM(monto) as total from Abono where factura_id= ".$this -> id;
+		$sqlAbono = Yii::app() -> db -> createCommand($sql) -> queryRow();	
 		if ($sqlAbono['total'] == NULL)
 			return '0';
 		else

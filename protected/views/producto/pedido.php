@@ -45,28 +45,37 @@ $pedido=Pedido::model()->findByPk($_GET['id']);
 	'filter'=>$model,
 	
 	'columns'=>array(
-
 	 array(
             'id'=>'autoId',
             'class'=>'CCheckBoxColumn',
-            'selectableRows' => '50',      
-               
+            'selectableRows' => '50',  
+            'checked' => '($data->check == "1")'                   
         ),
+	array(
+	       'name'=>'binaryfile',
+		   'type'=>'raw',
+	       'value'=>'$data->getImagen(50)',
+                ),
+	
 		'detalle',
 		'descripcion',
-		
 		array(
-			'class'=>'CButtonColumn',
-			'template'=>'{view}{update}',
-		),
+            'name'=>'check',
+            'header'=>'Agregado',
+            'filter'=>array('1'=>'Yes','0'=>'No'),
+            'value'=>'($data->check=="1")?("Yes"):("No")'
+        ),
+		
+		
 	),
 ));  }?>
 <script>
 function reloadGrid(data) {
-    $.fn.yiiGridView.update('menu-grid');
+    $.fn.yiiGridView.update('producto-grid');
 }
 </script>
 <?php echo CHtml::ajaxSubmitButton('Agregar',array('ajaxupdate','act'=>'doAdd','id'=>$_GET['id']), array('success'=>'reloadGrid')); ?>
 <?php echo CHtml::ajaxSubmitButton('Eliminar',array('ajaxupdate','act'=>'doDelete','id'=>$_GET['id']), array('success'=>'reloadGrid')); ?>
 <?php echo CHtml::ajaxSubmitButton('Eliminar Todos',array('ajaxupdate','act'=>'doDeleteAll','id'=>$_GET['id']), array('success'=>'reloadGrid')); ?>
+<?php echo CHtml::button('Terminar',array('submit' => array('pedido/admin'))); ?>
 <?php $this->endWidget(); ?>

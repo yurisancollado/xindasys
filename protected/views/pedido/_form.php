@@ -17,12 +17,17 @@
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
 		)
-)); ?>
+));
+$cliente=Cliente::model()->findByPk($_GET['cliente']);?> 
 
 	<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
+	<div class="row">
+		<?php echo $form->labelEx($model,'clientes_id'); ?>
+		<?php echo $form->hiddenField($model, 'clientes_id',array('value'=>$_GET['cliente'])); ?>
+		<?php echo "<input type='text' disabled='disabled' value='".$cliente->nombre." ".$cliente->apellido."'/>"; ?>
+	</div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'numero'); ?>
 		<?php echo $form->textField($model,'numero'); ?>
@@ -46,16 +51,6 @@
 		);?>
 		<?php echo $form->error($model,'fecha'); ?>
 	</div>
-
-	
-	<div class="row">
-		<?php echo $form->labelEx($model,'clientes_id'); ?>
-		<?php echo $form->textField($model,'clientes_id'); ?>
-		<?php echo $form->error($model,'clientes_id'); ?>
-	</div>
-
-	
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Siguiente' : 'Guardar'); ?>
 	</div>

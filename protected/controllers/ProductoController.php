@@ -145,9 +145,16 @@ class ProductoController extends Controller {
 
 		$autoIdAll = $_POST['autoId'];
 
-		if (!$act == 'doDeleteAll') {
-			echo  "entro";
+		if ($act == 'doDeleteAll') {
+			$listmodel = PedidoHasProductos::model() -> findAllByAttributes(array('pedido_id' => $id));
+			foreach ($listmodel as $model) {
+				if ($model -> delete())
+					echo 'ok';
+			}
+		} else {
+			echo "entro";
 			if (count($autoIdAll) > 0) {
+				echo "entro 2";
 				foreach ($autoIdAll as $autoId) {
 					if ($act == 'doAdd') {
 						$model2 = PedidoHasProductos::model() -> findByAttributes(array('pedido_id' => $id, 'productos_id' => $autoId));
@@ -171,45 +178,40 @@ class ProductoController extends Controller {
 					}
 				}
 			}
-		} else {
-			$listmodel = PedidoHasProductos::model() -> findAllByAttributes(array('pedido_id' => $id));
-			foreach ($listmodel as $model) {
-				if ($model -> delete())
-					echo 'ok';
-			}
 		}
 	}
 
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer $id the ID of the model to be loaded
-	 * @return Producto the loaded model
-	 * @throws CHttpException
-	 */
-	public function loadModel($id) {
-		$model = Producto::model() -> findByPk($id);
-		if ($model === null)
-			throw new CHttpException(404, 'The requested page does not exist.');
-		return $model;
-	}
 
-	/**
-	 * Performs the AJAX validation.
-	 * @param Producto $model the model to be validated
-	 */
-	protected function performAjaxValidation($model) {
-		if (isset($_POST['ajax']) && $_POST['ajax'] === 'producto-form') {
-			echo CActiveForm::validate($model);
-			Yii::app() -> end();
-		}
-	}
+/**
+ * Returns the data model based on the primary key given in the GET variable.
+ * If the data model is not found, an HTTP exception will be raised.
+ * @param integer $id the ID of the model to be loaded
+ * @return Producto the loaded model
+ * @throws CHttpException
+ */
+public function loadModel($id) {
+$model = Producto::model() -> findByPk($id);
+if ($model === null)
+throw new CHttpException(404, 'The requested page does not exist.');
+return $model;
+}
 
-	public function actionloadImage($id) {
-		$model = $this -> loadModel($id);
-		header('Content-Type: ' . $model -> fileType);
-		print $model -> binaryfile;
+/**
+* Performs the AJAX validation.
+* @param Producto $model the model to be validated
+*/
+protected function performAjaxValidation($model) {
+if (isset($_POST['ajax']) && $_POST['ajax'] === 'producto-form') {
+echo CActiveForm::validate($model);
+Yii::app() -> end();
+}
+}
 
-	}
+public function actionloadImage($id) {
+$model = $this -> loadModel($id);
+header('Content-Type: ' . $model -> fileType);
+print $model -> binaryfile;
+
+}
 
 }

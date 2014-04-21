@@ -44,8 +44,7 @@ $('.search-form form').submit(function(){
         'value'=>'date("d-m-Y", strtotime($data->fecha))',
     ),
 		'numero',
-		'monto',
-										
+		'monto',					
 		array(
 		'name'=>'clientes_id',
 		'header'=>'Cliente',

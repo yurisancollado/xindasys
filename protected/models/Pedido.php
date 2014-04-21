@@ -113,4 +113,6 @@ class Pedido extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+
 }

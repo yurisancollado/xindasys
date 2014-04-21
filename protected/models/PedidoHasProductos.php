@@ -12,6 +12,7 @@ class PedidoHasProductos extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+	 public $check;
 	public function tableName()
 	{
 		return 'pedido_has_productos';
@@ -91,4 +92,5 @@ class PedidoHasProductos extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-}
+	
+	}
