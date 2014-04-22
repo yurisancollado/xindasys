@@ -97,6 +97,8 @@ class UsuarioController extends Controller
 		if(isset($_POST['Usuario']))
 		{
 			$model->attributes=$_POST['Usuario'];
+			if($model->password!=="")
+				$model->password=md5($model->password);
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

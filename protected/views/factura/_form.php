@@ -18,7 +18,16 @@
 		'validateOnSubmit'=>true,
 		)
 )); 
-$cliente=Cliente::model()->findByPk($_GET['cliente']);?>
+if(isset($_GET['cliente'])){
+	$cliente=Cliente::model()->findByPk($_GET['cliente']);
+	$id_cliente=$_GET['cliente'];
+}
+else{
+	$cliente=Cliente::model()->findByPk($model->clientes_id);
+	$id_cliente=$model->clientes_id;
+}
+
+?>
 
 	<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
 
@@ -26,7 +35,7 @@ $cliente=Cliente::model()->findByPk($_GET['cliente']);?>
 	
 	<div class="row">
 		<?php echo $form->labelEx($model,'clientes_id'); ?>
-		<?php echo $form->hiddenField($model, 'clientes_id',array('value'=>$_GET['cliente'])); ?>
+		<?php echo $form->hiddenField($model, 'clientes_id',array('value'=>$id_cliente)); ?>
 		<?php echo "<input type='text' disabled='disabled' value='".$cliente->nombre." ".$cliente->apellido."'/>"; ?>
 	</div>
 	<div class="row">

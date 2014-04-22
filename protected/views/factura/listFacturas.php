@@ -10,7 +10,6 @@ $cliente=Cliente::model()->findByPk($_GET['id']);
 
 $this->menu=array(
 	array('label'=>'Administrador Cliente', 'url'=>array('cliente/admin')),
-	array('label'=>'<hr>'),
 	array('label'=>'Ver Cliente', 'url'=>array('cliente/view', 'id'=>$cliente->id)),
 	array('label'=>'<hr>'),
 	array('label'=>'Crear Factura', 'url'=>array('factura/create','cliente'=>$cliente->id)),

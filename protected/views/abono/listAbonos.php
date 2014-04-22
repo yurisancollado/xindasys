@@ -8,6 +8,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
+	
+	array('label'=>'Administrar Factura', 'url'=>array('admin')),
+	array('label'=>'Administrador Cliente', 'url'=>array('cliente/admin')),
+	array('label'=>'<hr>'),
+	array('label'=>'Ver Cliente', 'url'=>array('cliente/view', 'id'=>$model->id)),
+	array('label'=>'<hr>'),
 	array('label'=>'Crear Abono', 'url'=>array('factura/admin')),
 );
 
