@@ -1,3 +1,15 @@
+<style>
+tr:nth-child(odd) {
+    background-color: #E5F1F4;
+}
+tr:nth-child(even) {
+    background-color: #F8F8F8;
+}
+
+.img-producto{text-align:center;}
+
+</style>
+
 <?php
 /* @var $this PedidoController */
 /* @var $model Pedido */
@@ -32,3 +44,17 @@ $this->menu=array(
 		
 	),
 )); ?>
+<br/><br/><br/><br/>
+<h2>Productos Asociados</h2>
+<table class="detail-view" id="productos">
+	<tbody>
+		<?php
+		foreach($model->productos as $producto){?>
+			<tr>
+				<td class="img-producto"><?php echo $producto->getImagen(50);?></td>
+				<td style="vertical-align:middle"><?php echo "<b>Nombre: </b>".$producto->detalle."<br/><b>Descripcion: </b>".$producto->descripcion;?></td>
+			</tr>	
+		<?php }?>
+	</tbody>
+</table>
+
