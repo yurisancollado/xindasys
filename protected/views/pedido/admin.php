@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Crear Pedido', 'url'=>array('create')),
+	array('label'=>'Crear Pedido', 'url'=>array('cliente/admin')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
