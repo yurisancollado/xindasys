@@ -21,7 +21,7 @@ $this->menu=array(
 	array('label'=>'Listar Facturas', 'url'=>array('factura/listafactura','id'=>$model->id)),
 	array('label'=>'Crear Factura', 'url'=>array('factura/create','cliente'=>$model->id)),
 	array('label'=>'<hr>'),
-	array('label'=>'Listar Pedidos', 'url'=>array('pedido/listafactura','id'=>$model->id)),
+	array('label'=>'Listar Pedidos', 'url'=>array('pedido/listapedido','id'=>$model->id)),
 	array('label'=>'Crear Pedido', 'url'=>array('pedido/create','cliente'=>$model->id)),
 	
 );

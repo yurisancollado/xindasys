@@ -85,7 +85,9 @@ class Factura extends CActiveRecord {
 		$criteria -> compare('clientes_id', $this -> clientes_id);
 		$criteria -> compare('usuarios_id', $this -> usuarios_id);
 
-		return new CActiveDataProvider($this, array('criteria' => $criteria, ));
+		return new CActiveDataProvider($this, array('criteria' => $criteria, 
+		'sort'=>array('defaultOrder'=>'numero ASC'), // orden por defecto según el atributo nombre
+    	'pagination'=>array('pageSize'=>10)));
 	}
 
 	/**

@@ -147,7 +147,6 @@ $model=$this->loadModel($id);
 
 	public function actionListafactura($id) {
 		$dataProvider = Factura::model() -> clienteFactura($id);
-
 		$this -> render('listFacturas',
 		array('dataProvider' => $dataProvider, 
 		'model' => new Factura, ));

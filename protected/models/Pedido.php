@@ -100,7 +100,9 @@ class Pedido extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
-		));
+			'sort'=>array('defaultOrder'=>'numero ASC'), // orden por defecto según el atributo nombre
+    	'pagination'=>array('pageSize'=>10)));
+		
 	}
 
 	/**
@@ -112,6 +114,12 @@ class Pedido extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+	#Busqueda de cliente factura
+	public function clientePedido($id = NULL) {
+		$criteria = new CDbCriteria;
+		$criteria -> addCondition('clientes_id=' . $id);
+		return new CActiveDataProvider($this, array('criteria' => $criteria, ));
 	}
 	
 

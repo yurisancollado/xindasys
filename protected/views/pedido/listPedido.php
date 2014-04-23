@@ -6,8 +6,11 @@ $this->breadcrumbs=array(
 	'Pedidos'=>array('admin'),
 	'Administrar',
 );
-
+$cliente=Cliente::model()->findByPk($_GET['id']);
 $this->menu=array(
+	array('label'=>'Administrador Cliente', 'url'=>array('cliente/admin')),
+	array('label'=>'Ver Cliente', 'url'=>array('cliente/view', 'id'=>$cliente->id)),
+	array('label'=>'<hr>'),
 	array('label'=>'Crear Pedido', 'url'=>array('create')),
 );
 
@@ -23,9 +26,10 @@ $('.search-form form').submit(function(){
 	return false;
 });
 ");
+$cliente=Cliente::model()->findByPk($_GET['id']);
 ?>
 
-<h1>Administrar Pedidos</h1>
+<h1>Pedidos  <?php echo $cliente->nombreCompleto?></h1>
 
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
@@ -35,7 +39,7 @@ $('.search-form form').submit(function(){
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'pedido-grid',
-	'dataProvider'=>$model->search(),
+	'dataProvider'=>$dataProvider,
 	'filter'=>$model,
 	'columns'=>array(
 		'numero',
@@ -57,6 +61,7 @@ $('.search-form form').submit(function(){
 		),
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>'{view}{update}',
 		),
 	),
 )); ?>

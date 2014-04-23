@@ -80,7 +80,9 @@ class Cliente extends CActiveRecord {
 		$criteria -> compare('rif', $this -> rif, true);
 		$criteria -> compare('estado', $this -> estado);
 
-		return new CActiveDataProvider($this, array('criteria' => $criteria, 'sort' => array('defaultOrder' => 'cedula ASC'), // orden por defecto según el atributo nombre
+		return new CActiveDataProvider($this,
+		 array('criteria' => $criteria, 
+		 'sort' => array('defaultOrder' => 'cedula ASC'), // orden por defecto según el atributo nombre
 		'pagination' => array('pageSize' => 10), ));
 	}
 
