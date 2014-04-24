@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 	'Pedidos'=>array('admin'),
 	'Administrar',
 );
-
+$this->bolmenu2=false;
 $this->menu=array(
 	array('label'=>'Crear Pedido', 'url'=>array('cliente/admin')),
 );

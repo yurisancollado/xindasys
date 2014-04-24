@@ -15,10 +15,12 @@ else {
 $this->menu=array(
 array('label'=>'Administrar Usuario', 'url'=>array('admin')),
 	array('label'=>'Crear Usuario', 'url'=>array('create')),
-	array('label'=>'<hr>'),
+);
+$this->bolmenu2=true;
+$this->nombreCliente=$model->nombre.' '.$model->apellido;;
+$this->menu2=array(
 	array('label'=>'Modificar Usuario', 'url'=>array('update', 'id'=>$model->id)),
 	$accionActivo,	
-	
 );
 ?>
 

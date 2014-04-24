@@ -9,8 +9,7 @@
 	<div id="sidebar">
 	<?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'Operaciones',
-			
+			'title'=>'General',			
 		));
 		$this->widget('zii.widgets.CMenu', array(
 			'items'=>$this->menu,
@@ -19,6 +18,21 @@
 		));
 		$this->endWidget();
 	?>
+	
+	<?php
+	if($this->bolmenu2){
+		$this->beginWidget('zii.widgets.CPortlet', array(
+			'title'=>$this->nombreCliente,			
+		));
+		$this->widget('zii.widgets.CMenu', array(
+			'items'=>$this->menu2,
+			'htmlOptions'=>array('class'=>'operations'),
+			'encodeLabel'=>false,
+		));
+		$this->endWidget();
+	}
+	?>
+	
 	</div><!-- sidebar -->
 </div>
 <?php $this->endContent(); ?>

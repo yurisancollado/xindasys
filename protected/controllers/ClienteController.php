@@ -7,6 +7,9 @@ class ClienteController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
+	public $menu2;
+	public $bolmenu2=false;
+	public $nombreCliente;
 
 	/**
 	 * @return array action filters
@@ -51,8 +54,10 @@ class ClienteController extends Controller
 	 */
 	public function actionView($id)
 	{
+		
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			
 		));
 	}
 
@@ -118,17 +123,6 @@ class ClienteController extends Controller
 	}
 
 	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Cliente');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
-
-	/**
 	 * Manages all models.
 	 */
 	public function actionAdmin()
@@ -175,12 +169,9 @@ class ClienteController extends Controller
 		$model=Cliente::model()->findByPk($id);
 		$model->estado=0;
 		if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		
+				$this->redirect(array('view','id'=>$model->id));		
 		#else 
-		#	print_r($model->getErrors());
-		
-		
+		#	print_r($model->getErrors());	
 	}
 	/**
 	 * Activar usuario.
@@ -193,4 +184,5 @@ class ClienteController extends Controller
 				$this->redirect(array('view','id'=>$model->id));
 		
 	}
+	
 }

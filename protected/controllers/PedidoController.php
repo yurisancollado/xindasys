@@ -6,7 +6,9 @@ class PedidoController extends Controller {
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout = '//layouts/column2';
-
+public $menu2;
+	public $bolmenu2=false;
+	public $nombreCliente;
 	/**
 	 * @return array action filters
 	 */

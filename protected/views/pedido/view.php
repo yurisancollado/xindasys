@@ -21,7 +21,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Administrar Pedido', 'url'=>array('admin')),
-	array('label'=>'Crear Pedido', 'url'=>array('create')),
+	array('label'=>'Crear Pedido', 'url'=>array('pedido/create','cliente'=>$model->id)),
 	array('label'=>'<hr>'),
 	array('label'=>'Modificar Pedido', 'url'=>array('update', 'id'=>$model->id)),
 	array('label'=>'Eliminar Pedido', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),

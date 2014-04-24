@@ -7,11 +7,21 @@ $this->breadcrumbs=array(
 	$model->nombre.' '.$model->apellido=>array('view','id'=>$model->id),
 	'Modificar',
 );
-
 $this->menu=array(
-	array('label'=>'Crear Cliente', 'url'=>array('create')),
-	array('label'=>'Ver Cliente', 'url'=>array('view', 'id'=>$model->id)),
+
 	array('label'=>'Administrar Cliente', 'url'=>array('admin')),
+	array('label'=>'Crear Cliente', 'url'=>array('create')),		
+);
+$this->bolmenu2=true;
+$this->nombreCliente=$model->nombre.' '.$model->apellido;;
+$this->menu2=array(
+	array('label'=>'Ver Cliente', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'<hr>'),
+	array('label'=>'Listar Facturas', 'url'=>array('factura/listafactura','cliente'=>$model->id)),
+	array('label'=>'Crear Factura', 'url'=>array('factura/create','cliente'=>$model->id)),
+	array('label'=>'<hr>'),
+	array('label'=>'Listar Pedidos', 'url'=>array('pedido/listapedido','cliente'=>$model->id)),
+	array('label'=>'Crear Pedido', 'url'=>array('pedido/create','cliente'=>$model->id)),
 );
 ?>
 
