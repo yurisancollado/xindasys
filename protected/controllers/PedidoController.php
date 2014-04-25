@@ -6,7 +6,7 @@ class PedidoController extends Controller {
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout = '//layouts/column2';
-public $menu2;
+	public $menu2;
 	public $bolmenu2=false;
 	public $nombreCliente;
 	/**
@@ -36,7 +36,7 @@ public $menu2;
 	 * @param integer $id the ID of the model to be displayed
 	 */
 	public function actionView($id) {
-		$this -> render('view', array('model' => $this -> loadModel($id), ));
+		$this -> render('view', array('model' => $this -> loadModel($id)));
 	}
 
 	/**
@@ -55,7 +55,7 @@ public $menu2;
 
 			if ($model -> save())
 				#$this->redirect(array('view','id'=>$model->id));
-				$this -> redirect(array('producto/pedido', 'id' => $model -> id));
+				$this -> redirect(array('producto/pedido', 'id' => $model -> id,'cliente'=>$_GET['cliente']));
 		}
 
 		$this -> render('create', array('model' => $model, ));
@@ -76,7 +76,7 @@ public $menu2;
 		if (isset($_POST['Pedido'])) {
 			$model -> attributes = $_POST['Pedido'];
 			if ($model -> save())
-				$this -> redirect(array('view', 'id' => $model -> id));
+				$this -> redirect(array('view', 'id' => $model -> id,'cliente'=>$_GET['cliente']));
 		}
 
 		$this -> render('update', array('model' => $model, ));
@@ -115,9 +115,9 @@ public $menu2;
 
 		$this -> render('admin', array('model' => $model, ));
 	}
-	public function actionListapedido($id) {
+	public function actionListapedido($cliente) {
 		
-		$dataProvider = Pedido::model() -> clientePedido($id);
+		$dataProvider = Pedido::model() -> clientePedido($cliente);
 		$this -> render('listPedido',
 		array('dataProvider' => $dataProvider, 
 		'model' => new Pedido, ));

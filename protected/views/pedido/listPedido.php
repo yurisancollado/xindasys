@@ -6,14 +6,22 @@ $this->breadcrumbs=array(
 	'Pedidos'=>array('admin'),
 	'Administrar',
 );
-$cliente=Cliente::model()->findByPk($_GET['id']);
+$cliente=Cliente::model()->findByPk($_GET['cliente']);
+$this->bolmenu2=true;
+$this->nombreCliente=$cliente->nombre.' '.$cliente->apellido;
 $this->menu=array(
-	array('label'=>'Administrador Cliente', 'url'=>array('cliente/admin')),
-	array('label'=>'Ver Cliente', 'url'=>array('cliente/view', 'id'=>$cliente->id)),
-	array('label'=>'<hr>'),
-	array('label'=>'Crear Pedido', 'url'=>array('create')),
+	array('label'=>'Administrar Cliente', 'url'=>array('cliente/admin')),
+	array('label'=>'Administrar Pedido', 'url'=>array('pedido/admin')),	
 );
-
+$this->menu2=array(
+	array('label'=>'Ver Cliente', 'url'=>array('cliente/view', 'id'=>$cliente->id)),
+	array('label'=>'Modificar Cliente', 'url'=>array('cliente/update', 'id'=>$cliente->id)),
+	array('label'=>'<hr>'),
+	array('label'=>'Listar Facturas', 'url'=>array('factura/listafactura','cliente'=>$cliente->id)),
+	array('label'=>'Crear Factura', 'url'=>array('factura/create','cliente'=>$cliente->id)),
+	array('label'=>'<hr>'),
+	array('label'=>'Crear Pedido', 'url'=>array('pedido/create','cliente'=>$cliente->id)),
+);
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();
@@ -26,7 +34,6 @@ $('.search-form form').submit(function(){
 	return false;
 });
 ");
-$cliente=Cliente::model()->findByPk($_GET['id']);
 ?>
 
 <h1>Pedidos  <?php echo $cliente->nombreCompleto?></h1>
@@ -61,7 +68,7 @@ $cliente=Cliente::model()->findByPk($_GET['id']);
 		),
 		array(
 			'class'=>'CButtonColumn',
-			'template'=>'{view}{update}',
+			'template'=>'{view}',
 		),
 	),
 )); ?>

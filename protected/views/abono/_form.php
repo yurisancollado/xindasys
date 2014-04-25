@@ -18,7 +18,10 @@
 		'validateOnSubmit'=>true,
 		)
 )); 
-$factura=Factura::model()->findByPk($_GET['id']);?>
+$factura=Factura::model()->findByPk($model->factura_id);
+if($factura==NULL)
+$factura=Factura::model()->findByPk($_GET['id']);
+?>
 
 	<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
 	<?php 

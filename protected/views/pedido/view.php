@@ -18,14 +18,22 @@ $this->breadcrumbs=array(
 	'Pedidos'=>array('admin'),
 	$model->numero,
 );
-
+$cliente=Cliente::model()->findByPk($model->clientes_id);
+$this->bolmenu2=true;
+$this->nombreCliente=$cliente->nombre.' '.$cliente->apellido;
 $this->menu=array(
-	array('label'=>'Administrar Pedido', 'url'=>array('admin')),
-	array('label'=>'Crear Pedido', 'url'=>array('pedido/create','cliente'=>$model->id)),
+	array('label'=>'Administrar Cliente', 'url'=>array('cliente/admin')),
+	array('label'=>'Administrar Pedido', 'url'=>array('pedido/admin')),	
+);
+$this->menu2=array(
+	array('label'=>'Ver Cliente', 'url'=>array('cliente/view', 'id'=>$cliente->id)),
+	array('label'=>'Modificar Cliente', 'url'=>array('cliente/update', 'id'=>$cliente->id)),
 	array('label'=>'<hr>'),
-	array('label'=>'Modificar Pedido', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Eliminar Pedido', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	
+	array('label'=>'Listar Facturas', 'url'=>array('factura/listafactura','cliente'=>$cliente->id)),
+	array('label'=>'Crear Factura', 'url'=>array('factura/create','cliente'=>$cliente->id)),
+	array('label'=>'<hr>'),
+	array('label'=>'Listar Pedidos', 'url'=>array('pedido/listapedido','cliente'=>$cliente->id)),
+	array('label'=>'Crear Pedido', 'url'=>array('pedido/create','cliente'=>$cliente->id)),
 );
 ?>
 

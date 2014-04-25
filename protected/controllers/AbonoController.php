@@ -6,7 +6,10 @@ class AbonoController extends Controller {
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout = '//layouts/column2';
-
+	public $menu2;
+	public $bolmenu2=false;
+	public $nombreCliente;
+	/**
 	/**
 	 * @return array action filters
 	 */
@@ -53,7 +56,7 @@ class AbonoController extends Controller {
 			$model -> usuarios_id = Yii::app() -> user -> id;
 			if ($model -> save()) {
 				$this -> actualizarFactura($model -> factura_id);
-				$this->redirect(array('factura/view','id'=>$model->id));
+				$this->redirect(array('abono/listabonos','id'=>$model->factura_id));
 			}
 		}
 

@@ -148,8 +148,8 @@ $model=$this->loadModel($id);
 		));
 	}
 
-	public function actionListafactura($id) {
-		$dataProvider = Factura::model() -> clienteFactura($id);
+	public function actionListafactura($cliente) {
+		$dataProvider = Factura::model() -> clienteFactura($cliente);
 		$this -> render('listFacturas',
 		array('dataProvider' => $dataProvider, 
 		'model' => new Factura, ));

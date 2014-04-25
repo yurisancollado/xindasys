@@ -5,11 +5,24 @@
 if(!Yii::app()->user->isGuest){
 $this->breadcrumbs=array(
 	'Productos'=>array('admin'),
-	'Administrar',
+	'Agregar Producto',
 );
-
+$cliente=Cliente::model()->findByPk($_GET['cliente']);
+$this->bolmenu2=true;
+$this->nombreCliente=$cliente->nombre.' '.$cliente->apellido;
 $this->menu=array(
-	array('label'=>'Crear Pedido', 'url'=>array('pedido/create')),
+	array('label'=>'Administrar Cliente', 'url'=>array('cliente/admin')),
+	array('label'=>'Administrar Pedido', 'url'=>array('admin')),	
+);
+$this->menu2=array(
+	array('label'=>'Ver Cliente', 'url'=>array('view', 'id'=>$cliente->id)),
+	array('label'=>'Modificar Cliente', 'url'=>array('update', 'id'=>$cliente->id)),
+	array('label'=>'<hr>'),
+	array('label'=>'Listar Facturas', 'url'=>array('factura/listafactura','cliente'=>$cliente->id)),
+	array('label'=>'Crear Factura', 'url'=>array('factura/create','cliente'=>$cliente->id)),
+	array('label'=>'<hr>'),
+	array('label'=>'Listar Pedidos', 'url'=>array('pedido/listapedido','cliente'=>$cliente->id)),
+	array('label'=>'Crear Pedido', 'url'=>array('pedido/create','cliente'=>$cliente->id)),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -77,5 +90,10 @@ function reloadGrid(data) {
 <?php echo CHtml::ajaxSubmitButton('Agregar',array('ajaxupdate','act'=>'doAdd','id'=>$_GET['id']), array('success'=>'reloadGrid')); ?>
 <?php echo CHtml::ajaxSubmitButton('Eliminar',array('ajaxupdate','act'=>'doDelete','id'=>$_GET['id']), array('success'=>'reloadGrid')); ?>
 <?php echo CHtml::ajaxSubmitButton('Eliminar Todos',array('ajaxupdate','act'=>'doDeleteAll','id'=>$_GET['id']), array('success'=>'reloadGrid')); ?>
-<?php echo CHtml::button('Terminar',array('submit' => array('pedido/admin'))); ?>
+<?php 
+if(isset($_GET['cliente']))
+	echo CHtml::button('Terminar',array('submit' => array('pedido/listapedido','cliente'=>$_GET['cliente']))); 
+else
+	echo CHtml::button('Terminar',array('submit' => array('pedido/admin'))); ?>
+	
 <?php $this->endWidget(); ?>
