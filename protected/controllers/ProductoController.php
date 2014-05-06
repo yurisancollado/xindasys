@@ -154,9 +154,7 @@ class ProductoController extends Controller {
 					echo 'ok';
 			}
 		} else {
-			echo "entro";
 			if (count($autoIdAll) > 0) {
-				echo "entro 2";
 				foreach ($autoIdAll as $autoId) {
 					if ($act == 'doAdd') {
 						$model2 = PedidoHasProductos::model() -> findByAttributes(array('pedido_id' => $id, 'productos_id' => $autoId));

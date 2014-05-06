@@ -75,6 +75,7 @@ class UsuarioController extends Controller
 			if($model->password!=="")
 				$model->password=md5($model->password);
 			$model->created_at=date('Y-m-d H:i:s');
+			$model->last_login=date('Y-m-d H:i:s');
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

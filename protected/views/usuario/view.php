@@ -17,7 +17,7 @@ array('label'=>'Administrar Usuario', 'url'=>array('admin')),
 	array('label'=>'Crear Usuario', 'url'=>array('create')),
 );
 $this->bolmenu2=true;
-$this->nombreCliente=$model->nombre.' '.$model->apellido;;
+$this->nombreCliente=$model->nombre.' '.$model->apellido;
 $this->menu2=array(
 	array('label'=>'Modificar Usuario', 'url'=>array('update', 'id'=>$model->id)),
 	$accionActivo,	

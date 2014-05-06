@@ -34,12 +34,12 @@ else{
 	<?php echo $form->errorSummary($model); ?>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'clientes_id'); ?>
+		<?php echo $form->labelEx('Cliente'); ?>
 		<?php echo $form->hiddenField($model, 'clientes_id',array('value'=>$id_cliente)); ?>
 		<?php echo "<input type='text' disabled='disabled' value='".$cliente->nombre." ".$cliente->apellido."'/>"; ?>
 	</div>
 	<div class="row">
-		<?php echo $form->labelEx($model,'numero'); ?>
+		<?php echo $form->labelEx('Numero de Factura'); ?>
 		<?php echo $form->textField($model,'numero',array('size'=>20,'maxlength'=>20)); ?>
 		<?php echo $form->error($model,'numero'); ?>
 	</div>
